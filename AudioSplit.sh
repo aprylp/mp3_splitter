@@ -46,16 +46,17 @@
 # NOTE:  for file in *.mp3 portion, if returns error saying mv cannot stat '*.mp3' no such file or directory, it means that there is an empty
 # subdirectory and can be ignored.  script will still run and append all files within the subdirectories regardless
 
-  for folder in *; do
-    if [ -d "$folder" ]; then
-      cd "$folder"
-      PRE=${folder#./}
-      for file in *.mp3; do
-        mv "$file" "${PRE}_$file"
-      done
-      cd ..
-    fi
-  done
+#commented out this section of script as Mark M. found that this solves the issue with the script renaming the original raw file as well as the split files
+#  #for folder in *; do
+#  #  if [ -d "$folder" ]; then
+#  #    cd "$folder"
+#  #    PRE=${folder#./}
+#  #    for file in *.mp3; do
+#  #      mv "$file" "${PRE}_$file"
+#  #    done
+#  #    cd ..
+#  #  fi
+#  #done
 
 # loops through and creates one chopped folder as a subdirectory within each directory, the folder name is appended with chopped_
 # so split files have a folder in which to be saved to (2nd part of for loop; change $folder to {1..3} would create 3 folders whose name
